@@ -4,21 +4,24 @@ import { readFileSync } from "fs";
 import dotenv from "dotenv";
 dotenv.config();
 
-const bundleDrop = sdk.getBundleDropModule(
-    process.env.APP_BUNDLE_MODULE_ADDRESS,
-);
+const editionDrop = sdk.getEditionDrop(process.env.EDITION_DROP_ADDRESS);
 
 (async () => {
     try {
-        await bundleDrop.createBatch([
+        await editionDrop.createBatch([
             {
-                name: "Rocket Engine",
-                description: "This NFT will give you access to SpaceDAO!",
-                image: readFileSync("scripts/assets/RocketEngine.jpg"),
+                name: "Calculus NFT",
+                description: "This NFT is a credential earned by knowing some calculus.",
+                image: readFileSync("scripts/assets/CalculusNFT.png"),
             },
         ]);
         console.log("✅ Successfully created a new NFT in the drop!");
     } catch (error) {
         console.error("failed to create the new NFT", error);
     }
-})()
+})();
+
+
+
+
+

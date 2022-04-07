@@ -1,26 +1,34 @@
 import sdk from "./1-initialize-sdk.js";
+import { MaxUint256 } from "@ethersproject/constants";
 
 import dotenv from "dotenv";
 dotenv.config();
 
-const bundleDrop = sdk.getBundleDropModule(
-    process.env.APP_BUNDLE_MODULE_ADDRESS,
-);
+const editionDrop = sdk.getEditionDrop(process.env.EDITION_DROP_ADDRESS);
 
 (async () => {
     try {
-        const claimConditionFactory = bundleDrop.getClaimConditionFactory();
-        // Specify conditions.
-        claimConditionFactory.newClaimPhase({
+        // We define our claim conditions, this is an array of objects because
+        // we can have multiple phases starting at different times if we want to
+        const claimConditions = [{
+            // When people are gonna be able to start claiming the NFTs (now)
             startTime: new Date(),
-            maxQuantity: 50_000,
-            maxQuantityPerTransaction: 1,
-        });
+            // The maximum number of NFTs that can be claimed.
+            maxQuantity: 500_000,
+            // The price of our NFT (free)
+            price: 0,
+            // The amount of NFTs people can claim in one transaction.
+            quantityLimitPerTransaction: 1,
+            // We set the wait between transactions to MaxUint256, which means
+            // people are only allowed to claim once.
+            waitInSeconds: MaxUint256,
+        }]
 
-
-        await bundleDrop.setClaimCondition(0, claimConditionFactory);
-        console.log("✅ Successfully set claim condition on bundle drop:", bundleDrop.address);
+        await editionDrop.claimConditions.set("0", claimConditions);
+        console.log("✅ Sucessfully set claim condition!");
     } catch (error) {
         console.error("Failed to set claim condition", error);
     }
-})()
+})();
+
+
