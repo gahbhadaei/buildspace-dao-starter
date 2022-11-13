@@ -1,11 +1,13 @@
-# buildspace x thirdweb - Build your own DAO with just Javascript
+# Crypto Credentials
 
-### **Welcome 👋**
-To get started with this course, clone this repo and follow these commands:
+This project deploys both an ERC-1155 contract and a React app allowing users to earn an NFT after demonstrating they have some knowledge of calculus. This can be extended to earning NFTs for demonstrating knowledge of various kinds. Hence, Crypto Credentials.
+
+You will need an Alchemy account and a Thirdweb account to deploy the contract.
+
+To get started, clone this repo and follow these commands:
 
 1. Run `npm install` at the root of your directory
-2. Run `npm start` to start the project
-3. Start coding!
+2. Sequentially execute scripts 1 through 4, making sure to update your .env file along the way
+3. Run `npm start` to start the project
 
-### **Questions?**
-Have some questions make sure you head over to your [buildspace Dashboard](https://app.buildspace.so/projects/COb520aae3-7925-42f4-a5e7-eaf718933766) and link your Discord account so you can get access to helpful channels and your instructor!
+This project was forked from the buildspace repository buildspace-dao-starter.
