@@ -43,7 +43,7 @@ const App = () => {
           console.log("🌟 this user has a Calculus Crytpo Credential NFT!");
         } else {
           setHasClaimedNFT(false);
-          console.log("😭 this user doesn't have a Calculus Crypto Crednetial NFT.");
+          console.log("😭 this user doesn't have a Calculus Crypto Credential NFT.");
         }
       } catch (error) {
         setHasClaimedNFT(false);
